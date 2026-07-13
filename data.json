@@ -1,0 +1,2002 @@
+{
+  "2026-07-13": {
+    "date": "2026-07-13",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 300,
+      "trading_study": 3600,
+      "review": 600,
+      "spiritual_growth": 0,
+      "exercise": 600,
+      "other_study": 7200
+    },
+    "counters": {
+      "parent_study": 1,
+      "parent_play": 2,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 7,
+    "todos": [
+      {
+        "id": "water_1200",
+        "text": "12:00 飲水未達 2 杯（補水）",
+        "source": "auto",
+        "done": true,
+        "createdAt": 1783933292205
+      },
+      {
+        "id": "water_1600",
+        "text": "16:00 飲水未達 4 杯（補水）",
+        "source": "auto",
+        "done": true,
+        "createdAt": 1783933292205
+      },
+      {
+        "id": "water_1900",
+        "text": "19:00 飲水未達 6 杯（補水）",
+        "source": "auto",
+        "done": true,
+        "createdAt": 1783933292205
+      },
+      {
+        "id": "spirit_1600",
+        "text": "16:00 靈命成長未達標（補做）",
+        "source": "auto",
+        "done": false,
+        "createdAt": 1783933292205
+      },
+      {
+        "id": "exercise_1600",
+        "text": "16:00 體能運動健身未達標（補做）",
+        "source": "auto",
+        "done": true,
+        "createdAt": 1783933292205
+      }
+    ]
+  },
+  "2026-07-14": {
+    "date": "2026-07-14",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-15": {
+    "date": "2026-07-15",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-16": {
+    "date": "2026-07-16",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-17": {
+    "date": "2026-07-17",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-18": {
+    "date": "2026-07-18",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-19": {
+    "date": "2026-07-19",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-07": {
+    "date": "2026-07-07",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-08": {
+    "date": "2026-07-08",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-09": {
+    "date": "2026-07-09",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-10": {
+    "date": "2026-07-10",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-11": {
+    "date": "2026-07-11",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "2026-07-12": {
+    "date": "2026-07-12",
+    "timers": {
+      "social_media": 0,
+      "trading_static_training": 0,
+      "trading_live_training": 0,
+      "real_live_trading": 0,
+      "trading_study": 0,
+      "review": 0,
+      "spiritual_growth": 0,
+      "exercise": 0,
+      "other_study": 0
+    },
+    "counters": {
+      "parent_study": 0,
+      "parent_play": 0,
+      "trading_static_cnt": 0,
+      "trading_live_cnt": 0
+    },
+    "journal": {
+      "emotion": 3,
+      "awareness": 2,
+      "setup": "",
+      "execution": "",
+      "review": "",
+      "nextAction": ""
+    },
+    "schedule": {},
+    "pretrade": {
+      "passes": 0
+    },
+    "water": 0,
+    "todos": []
+  },
+  "exportedAt": "2026-07-13T09:17:05.992Z",
+  "schemaVersion": 1,
+  "trackerMeta": {
+    "timers": {
+      "social_media": {
+        "label": "社群娛樂",
+        "defaultGoal": 1
+      },
+      "trading_static_training": {
+        "label": "歷史圖表訓練",
+        "defaultGoal": 1
+      },
+      "trading_live_training": {
+        "label": "實時市場訓練",
+        "defaultGoal": 1
+      },
+      "real_live_trading": {
+        "label": "實盤交易記錄",
+        "defaultGoal": 2
+      },
+      "trading_study": {
+        "label": "交易影音學習",
+        "defaultGoal": 0.5
+      },
+      "review": {
+        "label": "交易覆盤總結",
+        "defaultGoal": 0.5
+      },
+      "spiritual_growth": {
+        "label": "靈命成長",
+        "defaultGoal": 0.5
+      },
+      "exercise": {
+        "label": "體能運動健身",
+        "defaultGoal": 0.5
+      },
+      "other_study": {
+        "label": "跨領域學習",
+        "defaultGoal": 1
+      }
+    },
+    "counters": {
+      "parent_study": {
+        "label": "親子共讀學習",
+        "defaultGoal": 1
+      },
+      "parent_play": {
+        "label": "親子遊戲陪伴",
+        "defaultGoal": 1
+      },
+      "trading_static_cnt": {
+        "label": "死圖分析次數",
+        "defaultGoal": 5
+      },
+      "trading_live_cnt": {
+        "label": "生圖分析次數",
+        "defaultGoal": 3
+      }
+    }
+  },
+  "goals": {
+    "trading": 2,
+    "spiritual_growth": 0.5,
+    "exercise": 0.5,
+    "learn": 1,
+    "social": 1,
+    "social_media": 1,
+    "trading_static_training": 1,
+    "trading_live_training": 1,
+    "real_live_trading": 2,
+    "trading_study": 0.5,
+    "review": 0.5,
+    "other_study": 1,
+    "counters": {
+      "parent_study": 1,
+      "parent_play": 1,
+      "trading_static_cnt": 15,
+      "trading_live_cnt": 15
+    }
+  },
+  "scheduleSlots": [
+    {
+      "id": "aest_0630_family_morning",
+      "time": "06:30-08:30 AEST",
+      "hkt": "",
+      "title": "小朋友起床 / 早餐 / 送學 / 家務高峰",
+      "metric": "0交易",
+      "status": "family",
+      "weight": 1,
+      "start": 390,
+      "end": 510
+    },
+    {
+      "id": "aest_0830_market_prep",
+      "time": "08:30-10:30 AEST",
+      "hkt": "06:30-08:30 HKT",
+      "title": "快速家務 + 開局前總準備",
+      "metric": "看日線/4H，標記 HSI/EUR/USD 關鍵 OB、FVG、liquidity；產出三句 bias + 關鍵價位，寫入日記；尚不交易",
+      "status": "prep",
+      "weight": 2,
+      "start": 510,
+      "end": 630
+    },
+    {
+      "id": "aest_1100_hsi_window",
+      "time": "11:00-12:30 AEST",
+      "hkt": "09:00-10:30 HKT",
+      "title": "HSI 交易窗",
+      "metric": "唯一 HSI real-time 執行時段；最多 1-2 單，每單風險 <= 1%，entry 前必過 checklist",
+      "status": "trade",
+      "weight": 3,
+      "start": 660,
+      "end": 750
+    },
+    {
+      "id": "aest_1230_lunch_flex",
+      "time": "12:30-15:00 AEST",
+      "hkt": "",
+      "title": "午餐 / 家務 / 接送 / 彈性時段",
+      "metric": "0交易；可對 HSI 已完成的單做中段快照紀錄",
+      "status": "family",
+      "weight": 1,
+      "start": 750,
+      "end": 900
+    },
+    {
+      "id": "aest_1500_home_reset",
+      "time": "15:00-16:30 AEST",
+      "hkt": "",
+      "title": "家務 / 晚餐備料收尾",
+      "metric": "0交易；預留淨空檔給歐洲 setup",
+      "status": "family",
+      "weight": 1,
+      "start": 900,
+      "end": 990
+    },
+    {
+      "id": "aest_1630_europe_setup",
+      "time": "16:30 AEST",
+      "hkt": "14:30 HKT",
+      "title": "歐洲市場 Setup",
+      "metric": "標記 London open 前關鍵位、liquidity pool、premium/discount；只做分析/劃線/落單計劃，完成後離開螢幕",
+      "status": "prep",
+      "weight": 2,
+      "start": 990,
+      "end": 1020
+    },
+    {
+      "id": "aest_1630_dinner_prep",
+      "time": "16:30-18:00 AEST",
+      "hkt": "",
+      "title": "煮飯前置作業 / 歐洲預掛單自動執行",
+      "metric": "若歐洲 setup 觸發預掛單，系統自動執行；不需要人盯盤",
+      "status": "auto",
+      "weight": 1,
+      "start": 1020,
+      "end": 1080
+    },
+    {
+      "id": "aest_1800_family_dinner",
+      "time": "18:00-19:30 AEST",
+      "hkt": "",
+      "title": "煮飯 + 家庭晚餐時間",
+      "metric": "完全離開圖表；螢幕關閉，0交易",
+      "status": "family",
+      "weight": 2,
+      "start": 1080,
+      "end": 1170
+    },
+    {
+      "id": "aest_1930_bedtime",
+      "time": "19:30-21:00 AEST",
+      "hkt": "17:30-19:00 HKT",
+      "title": "小朋友睡前程序",
+      "metric": "0交易",
+      "status": "family",
+      "weight": 1,
+      "start": 1170,
+      "end": 1260
+    },
+    {
+      "id": "aest_2100_us_setup",
+      "time": "21:00-23:00 AEST",
+      "hkt": "19:00-21:00 HKT",
+      "title": "美國市場 Setup + 開盤觀察",
+      "metric": "21:00-21:30 標記關鍵位落計劃；21:30 後觀察 waterfall/sweep 是否符合計劃；最多 1 單，風險 <= 1%，禁止臨場加新想法",
+      "status": "trade",
+      "weight": 3,
+      "start": 1260,
+      "end": 1380
+    },
+    {
+      "id": "aest_2300_review",
+      "time": "23:00-23:30 AEST",
+      "hkt": "",
+      "title": "每日覆盤（神復盤）",
+      "metric": "三個市場合併寫一篇日記；100% 完成率，非談判習慣；太累可 15 分鐘語音備忘，隔天早上補打字",
+      "status": "review",
+      "weight": 3,
+      "start": 1380,
+      "end": 1410
+    },
+    {
+      "id": "aest_2330_sleep_hygiene",
+      "time": "23:30 後 AEST",
+      "hkt": "",
+      "title": "遠離螢幕 / 睡眠衛生",
+      "metric": "不做隔夜監倉刺激決策",
+      "status": "recovery",
+      "weight": 2,
+      "start": 1410,
+      "end": 1830
+    }
+  ],
+  "dailySummaries": [
+    {
+      "date": "2026-07-02",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": null,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-03",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-04",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-05",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-06",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-07",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-08",
+      "timerHours": {
+        "social_media": 3.333,
+        "trading_static_training": 2,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0.25,
+        "review": 0,
+        "spiritual_growth": 0.167,
+        "exercise": 0.083,
+        "other_study": 2
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 2,
+        "trading_static_cnt": 5,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 4.5,
+      "completedTimerGoals": 3,
+      "completedCounterGoals": 1,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": true
+    },
+    {
+      "date": "2026-07-09",
+      "timerHours": {
+        "social_media": 0.501,
+        "trading_static_training": 2.5,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0.077,
+        "review": 0,
+        "spiritual_growth": 0.167,
+        "exercise": 0.086,
+        "other_study": 3.167
+      },
+      "counters": {
+        "parent_study": 1,
+        "parent_play": 1,
+        "trading_static_cnt": 8,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 5,
+      "focusHours": 5.997,
+      "completedTimerGoals": 2,
+      "completedCounterGoals": 2,
+      "scheduleCompletionPercent": 33,
+      "scheduleWeightedPercent": 23,
+      "scheduleCompletedSlots": 4,
+      "scheduleCompletedWeight": 5,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-10",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 24.565,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 24.565,
+      "completedTimerGoals": 1,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-11",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0.443,
+        "trading_live_training": 1.272,
+        "real_live_trading": 0,
+        "trading_study": 0.625,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0.25,
+        "other_study": 1
+      },
+      "counters": {
+        "parent_study": 1,
+        "parent_play": 2,
+        "trading_static_cnt": 12,
+        "trading_live_cnt": 7
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 1,
+      "focusHours": 3.589,
+      "completedTimerGoals": 3,
+      "completedCounterGoals": 2,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-12",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 1.834,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 5,
+      "focusHours": 1.834,
+      "completedTimerGoals": 1,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-13",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-14",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-15",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-16",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-17",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-18",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    },
+    {
+      "date": "2026-07-19",
+      "timerHours": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "emotion": 3,
+      "awareness": 2,
+      "pretradePasses": 0,
+      "waterCups": 0,
+      "focusHours": 0,
+      "completedTimerGoals": 0,
+      "completedCounterGoals": 0,
+      "scheduleCompletionPercent": 0,
+      "scheduleWeightedPercent": 0,
+      "scheduleCompletedSlots": 0,
+      "scheduleCompletedWeight": 0,
+      "scheduleTotalWeight": 22,
+      "hasJournalText": false
+    }
+  ],
+  "rawData": {
+    "2026-07-09": {
+      "date": "2026-07-09",
+      "timers": {
+        "social_media": 1802.218,
+        "trading_static_training": 9000,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 276.3250000000031,
+        "review": 0,
+        "spiritual_growth": 600,
+        "exercise": 311.3589999999996,
+        "other_study": 11400
+      },
+      "counters": {
+        "parent_study": 1,
+        "parent_play": 1,
+        "trading_static_cnt": 8,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {
+        "aest_0630_family_morning": true,
+        "aest_1500_home_reset": true,
+        "aest_1230_lunch_flex": true,
+        "aest_1630_europe_setup": true
+      },
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 5,
+      "todos": []
+    },
+    "2026-07-06": {
+      "date": "2026-07-06",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-07": {
+      "date": "2026-07-07",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-08": {
+      "date": "2026-07-08",
+      "timers": {
+        "social_media": 12000,
+        "trading_static_training": 7200,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 900,
+        "review": 0,
+        "spiritual_growth": 600,
+        "exercise": 300,
+        "other_study": 7200
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 2,
+        "trading_static_cnt": 5,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "ä»æ¥ä¸»è¦åæ­»å, ç¼ç¾ææè¦ä½åå¤§TF, åè¦è«åå°é, ç¡å©æ¹å, ææçåæé»è§£å»å°æåä½å°±å, å°±è¦å°æåæé¡¯OBä¿å°, NOT SUREä¿åä¿æé",
+        "execution": "N/A",
+        "review": "è¦å°æ©«è¡ä¸­æè®å¥, å¯å¤Dçæ",
+        "nextAction": "ç¹¼çºåªå, åå·¦åDASHBOARD å¸ææ´ææç"
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-10": {
+      "date": "2026-07-10",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 88435.58200000004,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-11": {
+      "date": "2026-07-11",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 1594,
+        "trading_live_training": 4577.572000000013,
+        "real_live_trading": 0,
+        "trading_study": 2249,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 900,
+        "other_study": 3600
+      },
+      "counters": {
+        "parent_study": 1,
+        "parent_play": 2,
+        "trading_static_cnt": 12,
+        "trading_live_cnt": 7
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 1,
+      "todos": [
+        {
+          "id": "water_1600",
+          "text": "16:00 飲水未達 4 杯（補水）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783749648705
+        },
+        {
+          "id": "spirit_1600",
+          "text": "16:00 靈命成長未達標（補做）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783749648706
+        },
+        {
+          "id": "exercise_1600",
+          "text": "16:00 體能運動健身未達標（補做）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783749648706
+        },
+        {
+          "id": "water_1900",
+          "text": "19:00 飲水未達 6 杯（補水）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783767094780
+        }
+      ]
+    },
+    "2026-07-12": {
+      "date": "2026-07-12",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 6602,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 5,
+      "todos": [
+        {
+          "id": "water_1200",
+          "text": "12:00 飲水未達 2 杯（補水）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783830747262
+        },
+        {
+          "id": "water_1600",
+          "text": "16:00 飲水未達 4 杯（補水）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783860732639
+        },
+        {
+          "id": "water_1900",
+          "text": "19:00 飲水未達 6 杯（補水）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783860732639
+        },
+        {
+          "id": "spirit_1600",
+          "text": "16:00 靈命成長未達標（補做）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783860732639
+        },
+        {
+          "id": "exercise_1600",
+          "text": "16:00 體能運動健身未達標（補做）",
+          "source": "auto",
+          "done": true,
+          "createdAt": 1783860732639
+        }
+      ]
+    },
+    "2026-07-03": {
+      "date": "2026-07-03",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0
+    },
+    "2026-07-04": {
+      "date": "2026-07-04",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0
+    },
+    "2026-07-05": {
+      "date": "2026-07-05",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-02": {
+      "date": "2026-07-02",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {}
+    },
+    "2026-07-13": {
+      "date": "2026-07-13",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": [
+        {
+          "id": "water_1200",
+          "text": "12:00 飲水未達 2 杯（補水）",
+          "source": "auto",
+          "done": false,
+          "createdAt": 1783934207362
+        },
+        {
+          "id": "water_1600",
+          "text": "16:00 飲水未達 4 杯（補水）",
+          "source": "auto",
+          "done": false,
+          "createdAt": 1783934207362
+        },
+        {
+          "id": "water_1900",
+          "text": "19:00 飲水未達 6 杯（補水）",
+          "source": "auto",
+          "done": false,
+          "createdAt": 1783934207362
+        },
+        {
+          "id": "spirit_1600",
+          "text": "16:00 靈命成長未達標（補做）",
+          "source": "auto",
+          "done": false,
+          "createdAt": 1783934207362
+        },
+        {
+          "id": "exercise_1600",
+          "text": "16:00 體能運動健身未達標（補做）",
+          "source": "auto",
+          "done": false,
+          "createdAt": 1783934207362
+        }
+      ]
+    },
+    "2026-07-14": {
+      "date": "2026-07-14",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-15": {
+      "date": "2026-07-15",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-16": {
+      "date": "2026-07-16",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-17": {
+      "date": "2026-07-17",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-18": {
+      "date": "2026-07-18",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    },
+    "2026-07-19": {
+      "date": "2026-07-19",
+      "timers": {
+        "social_media": 0,
+        "trading_static_training": 0,
+        "trading_live_training": 0,
+        "real_live_trading": 0,
+        "trading_study": 0,
+        "review": 0,
+        "spiritual_growth": 0,
+        "exercise": 0,
+        "other_study": 0
+      },
+      "counters": {
+        "parent_study": 0,
+        "parent_play": 0,
+        "trading_static_cnt": 0,
+        "trading_live_cnt": 0
+      },
+      "journal": {
+        "emotion": 3,
+        "awareness": 2,
+        "setup": "",
+        "execution": "",
+        "review": "",
+        "nextAction": ""
+      },
+      "schedule": {},
+      "pretrade": {
+        "passes": 0
+      },
+      "water": 0,
+      "todos": []
+    }
+  }
+}
