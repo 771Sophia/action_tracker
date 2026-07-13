@@ -1,0 +1,18 @@
+{
+  "name": "行動與交易追蹤儀表板",
+  "short_name": "交易追蹤",
+  "description": "運動 App 風格的每日行動與交易日記追蹤小工具",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f0f15",
+  "theme_color": "#1e1e2f",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

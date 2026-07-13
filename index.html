@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>行動與交易追蹤儀表板</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="theme-color" content="#1e1e2f">
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation (Desktop) & Bottom Navigation (Mobile) -->
+    <nav class="app-nav">
+      <div class="nav-logo">
+        <svg viewBox="0 0 512 512" class="logo-icon">
+          <circle cx="256" cy="256" r="200" fill="none" stroke="url(#logo-grad)" stroke-width="32" />
+          <path d="M180,256 L240,310 L340,190" fill="none" stroke="#00f2fe" stroke-width="32" stroke-linecap="round" stroke-linejoin="round" />
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00f2fe" />
+              <stop offset="100%" stop-color="#4facfe" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">FocusTrader</span>
+      </div>
+      
+      <div class="nav-menu">
+        <button type="button" class="nav-btn active" data-target="widget-view">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+          <span class="nav-label">小工具計時</span>
+        </button>
+        <button type="button" class="nav-btn" data-target="dashboard-view">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+          <span class="nav-label">運動儀表板</span>
+        </button>
+        <button type="button" class="nav-btn" data-target="history-view">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <span class="nav-label">歷史交易日記</span>
+        </button>
+        <button type="button" class="nav-btn" data-target="schedule-view">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path></svg>
+          <span class="nav-label">時間表</span>
+        </button>
+        <button type="button" class="nav-btn" data-target="settings-view">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="nav-icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <span class="nav-label">設定與同步</span>
+        </button>
+      </div>
+
+      <div class="nav-footer">
+        <div class="sync-badge offline" id="nav-sync-status">
+          <span class="badge-dot"></span>
+          <span class="badge-text">本地儲存</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+
+      <!-- Global Pomodoro + To-do (visible on all pages) -->
+      <div class="top-focus-row">
+        <section class="pomodoro-bar" id="pomodoro-bar" data-mode="work">
+          <div class="pomodoro-ring-wrap" aria-hidden="true">
+            <svg class="pomodoro-ring-svg" viewBox="0 0 120 120">
+              <circle class="pomodoro-ring-track" cx="60" cy="60" r="52"></circle>
+              <circle class="pomodoro-ring-progress" id="pomodoro-ring-progress" cx="60" cy="60" r="52"></circle>
+            </svg>
+            <div class="pomodoro-ring-center">
+              <span class="pomodoro-time" id="pomodoro-time">25:00</span>
+            </div>
+          </div>
+          <div class="pomodoro-bar-copy">
+            <span class="pomodoro-kicker">蕃茄時鐘</span>
+            <span class="pomodoro-mode" id="pomodoro-mode-label">專注 25 分鐘</span>
+            <span class="pomodoro-progress-text" id="pomodoro-progress-text">剩餘 100%</span>
+          </div>
+          <div class="pomodoro-controls">
+            <button type="button" class="btn btn-primary" id="pomodoro-toggle-btn">開始</button>
+            <button type="button" class="btn btn-secondary" id="pomodoro-reset-btn">重設</button>
+            <button type="button" class="btn btn-secondary" id="pomodoro-skip-btn">切換休息/專注</button>
+          </div>
+        </section>
+
+        <section class="glass-card todo-panel" id="todo-panel">
+          <div class="todo-header">
+            <h3 class="card-title">今日 To-do</h3>
+            <span class="todo-count" id="todo-count">0 項</span>
+          </div>
+          <p class="todo-hint">逾時未達標會自動加入（飲水 / 靈命 / 運動）</p>
+          <ul class="todo-list" id="todo-list">
+            <!-- Todos rendered by JS -->
+          </ul>
+        </section>
+      </div>
+      
+      <!-- Top header (Date indicator, Widget View compact toggler) -->
+      <header class="content-header">
+        <div class="header-info">
+          <h1 id="view-title">小工具計時器</h1>
+          <p id="current-date-str">加載中...</p>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn btn-primary btn-icon-text" id="btn-save-push" title="儲存本地並推送到 GitHub">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span class="btn-text">儲存並推送</span>
+          </button>
+          <button type="button" class="btn btn-icon-text" id="toggle-widget-size" title="切換小工具精簡視窗">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+            <span class="btn-text">極簡小工具模式</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- View 1: Tracker Widget View (Default) -->
+      <section id="widget-view" class="view-panel active">
+        <div class="widget-grid-container">
+
+          <!-- Now Card: what should I do right now -->
+          <div class="glass-card now-card" id="now-card" data-status="free">
+            <div class="now-card-main">
+              <span class="now-label">而家做乜</span>
+              <span class="now-slot-time" id="now-slot-time">--</span>
+              <span class="now-slot-title" id="now-slot-title">載入中...</span>
+              <span class="now-slot-metric" id="now-slot-metric"></span>
+            </div>
+            <div class="now-card-next">
+              <span class="now-next-label">下一格</span>
+              <span class="now-next-info" id="now-next-info">--</span>
+            </div>
+          </div>
+
+          <!-- Water Tracker -->
+          <div class="glass-card water-card">
+            <div class="water-header">
+              <div>
+                <h3 class="card-title">飲水目標</h3>
+                <span class="field-help">每日 8 杯；檢查點：12:00≥2、16:00≥4、19:00≥6（未達會入 To-do）</span>
+              </div>
+              <span class="water-progress-text" id="water-progress-text">0/8 杯</span>
+            </div>
+            <div class="water-cups" id="water-cups">
+              <!-- Water cups rendered dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Pre-trade Checklist -->
+          <div class="glass-card pretrade-card">
+            <div class="pretrade-header">
+              <h3 class="card-title">落單前 Checklist（4/7 可以入場）</h3>
+              <span class="pretrade-status" id="pretrade-status">0/7</span>
+            </div>
+            <div class="pretrade-list" id="pretrade-list">
+              <!-- Checklist items rendered dynamically by JS -->
+            </div>
+            <div class="pretrade-actions">
+              <button type="button" class="btn btn-primary" id="btn-pretrade-pass" disabled>至少 4/7 先可以落單</button>
+              <button type="button" class="btn btn-secondary" id="btn-pretrade-reset">重設</button>
+            </div>
+            <span class="field-help">今日通過次數: <strong id="pretrade-pass-count">0</strong>｜少過 4/7 = 唔准落單</span>
+          </div>
+          
+          <!-- Timers Section -->
+          <div class="tracker-section">
+            <h2 class="section-title">
+              <span class="title-glow"></span>
+              時間計時項目 (互斥計時)
+            </h2>
+            <div class="timer-grid">
+              
+              <!-- Timer: Social Media -->
+              <div class="timer-card" id="card-social_media" style="--accent-rgb: 255, 75, 75;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">社群娛樂</span>
+                  <span class="timer-tag" style="background: rgba(255, 75, 75, 0.15); color: #ff4b4b;">限時</span>
+                </div>
+                <div class="timer-display" id="time-social_media">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-social_media"></div></div>
+                  <span class="card-pb-label" id="pbtxt-social_media">限制: 1.0h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="social_media">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Static Chart Training -->
+              <div class="timer-card" id="card-trading_static_training" style="--accent-rgb: 255, 184, 0;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">歷史圖表訓練</span>
+                  <span class="timer-tag" style="background: rgba(255, 184, 0, 0.15); color: #ffb800;">死圖</span>
+                </div>
+                <div class="timer-display" id="time-trading_static_training">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-trading_static_training"></div></div>
+                  <span class="card-pb-label" id="pbtxt-trading_static_training">目標: 1.0h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="trading_static_training">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Live Chart Training -->
+              <div class="timer-card" id="card-trading_live_training" style="--accent-rgb: 0, 230, 118;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">實時市場訓練</span>
+                  <span class="timer-tag" style="background: rgba(0, 230, 118, 0.15); color: #00e676;">生圖</span>
+                </div>
+                <div class="timer-display" id="time-trading_live_training">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-trading_live_training"></div></div>
+                  <span class="card-pb-label" id="pbtxt-trading_live_training">目標: 1.0h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="trading_live_training">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Real Live Trading -->
+              <div class="timer-card" id="card-real_live_trading" style="--accent-rgb: 0, 229, 255;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">實盤交易記錄</span>
+                  <span class="timer-tag" style="background: rgba(0, 229, 255, 0.15); color: #00e5ff;">實盤</span>
+                </div>
+                <div class="timer-display" id="time-real_live_trading">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-real_live_trading"></div></div>
+                  <span class="card-pb-label" id="pbtxt-real_live_trading">目標: 2.0h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="real_live_trading">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Trading Video/Study -->
+              <div class="timer-card" id="card-trading_study" style="--accent-rgb: 47, 128, 237;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">交易影音學習</span>
+                  <span class="timer-tag" style="background: rgba(47, 128, 237, 0.15); color: #2f80ed;">學習</span>
+                </div>
+                <div class="timer-display" id="time-trading_study">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-trading_study"></div></div>
+                  <span class="card-pb-label" id="pbtxt-trading_study">目標: 0.5h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="trading_study">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Trading Review -->
+              <div class="timer-card" id="card-review" style="--accent-rgb: 79, 70, 229;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">交易覆盤總結</span>
+                  <span class="timer-tag" style="background: rgba(79, 70, 229, 0.15); color: #4f46e5;">覆盤</span>
+                </div>
+                <div class="timer-display" id="time-review">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-review"></div></div>
+                  <span class="card-pb-label" id="pbtxt-review">目標: 0.5h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="review">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Spiritual Growth -->
+              <div class="timer-card" id="card-spiritual_growth" style="--accent-rgb: 139, 92, 246;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">靈命成長</span>
+                  <span class="timer-tag" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">靜心</span>
+                </div>
+                <div class="timer-display" id="time-spiritual_growth">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-spiritual_growth"></div></div>
+                  <span class="card-pb-label" id="pbtxt-spiritual_growth">目標: 0.5h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="spiritual_growth">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Exercise -->
+              <div class="timer-card" id="card-exercise" style="--accent-rgb: 236, 72, 153;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">體能運動健身</span>
+                  <span class="timer-tag" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">健身</span>
+                </div>
+                <div class="timer-display" id="time-exercise">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-exercise"></div></div>
+                  <span class="card-pb-label" id="pbtxt-exercise">目標: 0.5h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="exercise">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Timer: Other Study -->
+              <div class="timer-card" id="card-other_study" style="--accent-rgb: 244, 63, 94;">
+                <div class="card-glow"></div>
+                <div class="timer-meta">
+                  <span class="timer-name">跨領域學習</span>
+                  <span class="timer-tag" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;">其他</span>
+                </div>
+                <div class="timer-display" id="time-other_study">00:00:00</div>
+                <div class="card-pb-container">
+                  <div class="card-pb-bar"><div class="card-pb-fill" id="pb-other_study"></div></div>
+                  <span class="card-pb-label" id="pbtxt-other_study">目標: 1.0h</span>
+                </div>
+                <div class="timer-controls">
+                  <button type="button" class="btn-timer-toggle" data-timer="other_study">
+                    <span class="start-label">Start</span>
+                    <span class="stop-label">Stop</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Counters Section -->
+          <div class="tracker-section">
+            <h2 class="section-title">
+              <span class="title-glow"></span>
+              次數累計項目 (ITEM UNIT)
+            </h2>
+            <div class="counter-grid">
+              
+              <!-- Counter: Parent Study -->
+              <div class="counter-card" style="--accent-rgb: 139, 92, 246;">
+                <div class="counter-info">
+                  <span class="counter-name">親子共讀學習</span>
+                  <span class="counter-val" id="cnt-parent_study">0</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="btn-counter" data-action="dec" data-counter="parent_study">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button type="button" class="btn-counter btn-counter-plus" data-action="inc" data-counter="parent_study">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Counter: Parent Play -->
+              <div class="counter-card" style="--accent-rgb: 236, 72, 153;">
+                <div class="counter-info">
+                  <span class="counter-name">親子互動遊戲</span>
+                  <span class="counter-val" id="cnt-parent_play">0</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="btn-counter" data-action="dec" data-counter="parent_play">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button type="button" class="btn-counter btn-counter-plus" data-action="inc" data-counter="parent_play">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Counter: Trading Static -->
+              <div class="counter-card" style="--accent-rgb: 255, 184, 0;">
+                <div class="counter-info">
+                  <span class="counter-name">圖表分析次數 (死圖)</span>
+                  <span class="counter-val" id="cnt-trading_static_cnt">0</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="btn-counter" data-action="dec" data-counter="trading_static_cnt">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button type="button" class="btn-counter btn-counter-plus" data-action="inc" data-counter="trading_static_cnt">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Counter: Trading Live -->
+              <div class="counter-card" style="--accent-rgb: 0, 230, 118;">
+                <div class="counter-info">
+                  <span class="counter-name">實時市場觀察 (生圖)</span>
+                  <span class="counter-val" id="cnt-trading_live_cnt">0</span>
+                </div>
+                <div class="counter-controls">
+                  <button type="button" class="btn-counter" data-action="dec" data-counter="trading_live_cnt">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                  <button type="button" class="btn-counter btn-counter-plus" data-action="inc" data-counter="trading_live_cnt">
+                    <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="3" fill="none"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- View 2: Fitness-style Dashboard View -->
+      <section id="dashboard-view" class="view-panel">
+        <!-- Dashboard Goal Summary -->
+        <div class="glass-card dashboard-goal-summary-card">
+          <div class="dashboard-goal-header">
+            <div>
+              <h3 class="card-title">今日目標總覽</h3>
+              <p class="settings-desc">小工具內不再顯示每個 item 的目標 bar；集中在這裡看整體進度。</p>
+            </div>
+            <span class="field-help">All Trading = 死圖 + 生圖 + 實盤 + 交易學習 + 覆盤</span>
+          </div>
+          <div class="dashboard-goal-layout">
+            <div class="dashboard-goal-bars" id="dashboard-goal-bars">
+              <!-- Goal bars rendered dynamically by JS -->
+            </div>
+            <div class="time-pie-panel">
+              <h4 class="weekly-row-title">今日時間分佈</h4>
+              <div class="time-pie-wrap" id="time-pie-chart">
+                <!-- Pie chart rendered dynamically by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Dashboard Top Stats Grid -->
+        <div class="dash-grid-top">
+          
+          <!-- Rings Ring Widget (Apple Fitness style) -->
+          <div class="glass-card ring-card">
+            <h3 class="card-title">今日核心目標圓環</h3>
+            <div class="rings-container">
+              <!-- SVG Activity Rings (Rendered dynamically) -->
+              <svg viewBox="0 0 240 240" class="activity-rings-svg" id="daily-rings-svg">
+                <!-- Inner glow filter -->
+                <defs>
+                  <filter id="ring-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/>
+                  </filter>
+                  <linearGradient id="ring-trade" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#00e676" />
+                    <stop offset="100%" stop-color="#00e5ff" />
+                  </linearGradient>
+                  <linearGradient id="ring-spirit" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#8b5cf6" />
+                    <stop offset="100%" stop-color="#a78bfa" />
+                  </linearGradient>
+                  <linearGradient id="ring-exercise" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ec4899" />
+                    <stop offset="100%" stop-color="#f43f5e" />
+                  </linearGradient>
+                  <linearGradient id="ring-learn" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2f80ed" />
+                    <stop offset="100%" stop-color="#00d2ff" />
+                  </linearGradient>
+                </defs>
+                
+                <!-- Track circles -->
+                <circle cx="120" cy="120" r="95" class="ring-bg" stroke="#1e1e2f" stroke-width="14" fill="none" />
+                <circle cx="120" cy="120" r="75" class="ring-bg" stroke="#1e1e2f" stroke-width="14" fill="none" />
+                <circle cx="120" cy="120" r="55" class="ring-bg" stroke="#1e1e2f" stroke-width="14" fill="none" />
+                <circle cx="120" cy="120" r="35" class="ring-bg" stroke="#1e1e2f" stroke-width="14" fill="none" />
+                
+                <!-- Active Rings -->
+                <!-- Ring 1: Trading (Emerald-Cyan, R=95, C=597) -->
+                <circle cx="120" cy="120" r="95" class="ring-active" id="ring-active-trade" stroke="url(#ring-trade)" stroke-width="14" fill="none" 
+                  stroke-linecap="round" stroke-dasharray="597" stroke-dashoffset="597" transform="rotate(-90 120 120)" filter="url(#ring-shadow)" />
+                <!-- Ring 2: Spiritual (Purple, R=75, C=471) -->
+                <circle cx="120" cy="120" r="75" class="ring-active" id="ring-active-spirit" stroke="url(#ring-spirit)" stroke-width="14" fill="none" 
+                  stroke-linecap="round" stroke-dasharray="471" stroke-dashoffset="471" transform="rotate(-90 120 120)" filter="url(#ring-shadow)" />
+                <!-- Ring 3: Exercise (Pink, R=55, C=346) -->
+                <circle cx="120" cy="120" r="55" class="ring-active" id="ring-active-exercise" stroke="url(#ring-exercise)" stroke-width="14" fill="none" 
+                  stroke-linecap="round" stroke-dasharray="346" stroke-dashoffset="346" transform="rotate(-90 120 120)" filter="url(#ring-shadow)" />
+                <!-- Ring 4: Learning (Blue, R=35, C=220) -->
+                <circle cx="120" cy="120" r="35" class="ring-active" id="ring-active-learn" stroke="url(#ring-learn)" stroke-width="14" fill="none" 
+                  stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="220" transform="rotate(-90 120 120)" filter="url(#ring-shadow)" />
+              </svg>
+              
+              <!-- Ring Legend -->
+              <div class="rings-legend">
+                <div class="legend-item">
+                  <span class="legend-dot" style="background: linear-gradient(135deg, #00e676, #00e5ff);"></span>
+                  <div class="legend-meta">
+                    <span class="legend-name">交易專注環</span>
+                    <span class="legend-progress" id="ring-val-trade">0%</span>
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);"></span>
+                  <div class="legend-meta">
+                    <span class="legend-name">靈命成長環</span>
+                    <span class="legend-progress" id="ring-val-spirit">0%</span>
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot" style="background: linear-gradient(135deg, #ec4899, #f43f5e);"></span>
+                  <div class="legend-meta">
+                    <span class="legend-name">體能運動環</span>
+                    <span class="legend-progress" id="ring-val-exercise">0%</span>
+                  </div>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot" style="background: linear-gradient(135deg, #2f80ed, #00d2ff);"></span>
+                  <div class="legend-meta">
+                    <span class="legend-name">個人學習環</span>
+                    <span class="legend-progress" id="ring-val-learn">0%</span>
+                  </div>
+                </div>
+              </div>
+          </div>
+          
+          <!-- Quick stats / focus dashboard -->
+          <div class="glass-card stat-cards-wrapper">
+            <h3 class="card-title">今日數據指標</h3>
+            <div class="stats-panel-grid">
+              <div class="stat-mini-card">
+                <span class="stat-label">今日專注時間</span>
+                <span class="stat-number" id="stat-focus-hours">0.0 <span class="stat-unit">小時</span></span>
+              </div>
+              <div class="stat-mini-card">
+                <span class="stat-label">連續達標天數(練槍)</span>
+                <span class="stat-number" id="stat-streak-days">0 <span class="stat-unit">天</span></span>
+                <span class="emotion-level-note" id="stat-streak-note">死圖+生圖 ≥ 20 次</span>
+              </div>
+              <div class="stat-mini-card">
+                <span class="stat-label">社群控制指數</span>
+                <span class="stat-number" id="stat-social-score">100 <span class="stat-unit">分</span></span>
+              </div>
+              <div class="stat-mini-card">
+                <span class="stat-label">親子陪伴次數</span>
+                <span class="stat-number" id="stat-parent-count">0 <span class="stat-unit">次</span></span>
+              </div>
+              <div class="stat-mini-card stat-emotion-card" id="stat-weekly-emotion-card">
+                <span class="stat-label">本週平均情緒</span>
+                <span class="stat-number" id="stat-weekly-emotion">-</span>
+                <span class="emotion-level-note" id="stat-weekly-emotion-note">尚未有足夠記錄</span>
+              </div>
+            </div>
+            
+            <!-- Weekly Rings Row -->
+            <div class="weekly-row-container">
+              <h4 class="weekly-row-title">本週每日目標達成牆</h4>
+              <div class="weekly-rings-row" id="weekly-rings-row-el">
+                <!-- Mini rings generated dynamically by JS -->
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Dashboard Charts & Journal Entry Form -->
+        <div class="dash-grid-bottom">
+          
+          <!-- Weekly Charts panel -->
+          <div class="glass-card chart-card">
+            <h3 class="card-title">每週進度分析</h3>
+            <div class="chart-toggles">
+              <button type="button" class="btn btn-sm btn-chart-toggle active" id="btn-chart-time">追蹤時間</button>
+              <button type="button" class="btn btn-sm btn-chart-toggle" id="btn-chart-emotion">心態波動</button>
+            </div>
+            
+            <div class="chart-canvas-container" id="chart-container">
+              <!-- SVG Bar or Line Charts injected here -->
+            </div>
+          </div>
+          
+          <!-- Daily Trading Journal Form -->
+          <div class="glass-card journal-card">
+            <h3 class="card-title">
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="vertical-align: middle; margin-right: 6px;"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+              今日交易日記
+            </h3>
+            <form id="trading-journal-form" class="journal-form">
+              
+              <!-- Emotion Rating Field (5 glowing states) -->
+              <div class="form-group">
+                <label class="form-label">心理/情緒狀態 (今日核心狀態)</label>
+                <div class="emotion-picker">
+                  <button type="button" class="emotion-btn" data-level="1" title="極度焦躁 / 失控衝動 / 報復性交易" style="--emo-color: 255, 0, 0;">
+                    <span class="emo-emoji">🔴</span>
+                    <span class="emo-txt">焦躁失控</span>
+                  </button>
+                  <button type="button" class="emotion-btn" data-level="2" title="情緒有波動 / 輕微 FOMO 或不耐煩" style="--emo-color: 255, 75, 75;">
+                    <span class="emo-emoji">🟠</span>
+                    <span class="emo-txt">波動FOMO</span>
+                  </button>
+                  <button type="button" class="emotion-btn active" data-level="3" title="心態平穩，但專注度一般 / 有雜念" style="--emo-color: 255, 165, 0;">
+                    <span class="emo-emoji">🟡</span>
+                    <span class="emo-txt">平穩一般</span>
+                  </button>
+                  <button type="button" class="emotion-btn" data-level="4" title="狀態良好 / 理性克制 / 嚴格執行計劃" style="--emo-color: 0, 230, 118;">
+                    <span class="emo-emoji">🟢</span>
+                    <span class="emo-txt">理性專注</span>
+                  </button>
+                  <button type="button" class="emotion-btn" data-level="5" title="極致平靜 / 處於心流狀態 / 不在意盈虧" style="--emo-color: 0, 229, 255;">
+                    <span class="emo-emoji">🔵</span>
+                    <span class="emo-txt">超然心流</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Awareness Self-Rating (metacognition) -->
+              <div class="form-group">
+                <label class="form-label">覺察度自評 (目標長期維持 1-2)</label>
+                <div class="awareness-picker">
+                  <button type="button" class="awareness-btn" data-aware="1">1 先知先覺</button>
+                  <button type="button" class="awareness-btn active" data-aware="2">2 當知當覺</button>
+                  <button type="button" class="awareness-btn" data-aware="3">3 後知後覺</button>
+                  <button type="button" class="awareness-btn" data-aware="4">4 不知不覺</button>
+                </div>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="journal-setup">1. 設定問題 (Setup 問題)</label>
+                  <textarea id="journal-setup" placeholder="記錄今日是否有亂做 Setup、追單、或未有耐性等候 Setup 的問題..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="journal-execution">2. 執行問題</label>
+                  <textarea id="journal-execution" placeholder="記錄今日是否有止損移開、手動亂平倉、手速太慢等執行紀律問題..."></textarea>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="journal-review">3. 覆盤總結</label>
+                <textarea id="journal-review" rows="3" placeholder="記錄今日的市場行情特徵、自己的交易表現與損益感悟..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="journal-next-action">4. 下一步行動</label>
+                <input type="text" id="journal-next-action" placeholder="寫下明天開盤前要改進的一個細節目標...">
+              </div>
+
+              <button type="submit" class="btn btn-primary" id="btn-save-journal">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" style="margin-right: 6px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+                儲存今日交易日記
+              </button>
+            </form>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- View 3: History & Search View -->
+      <section id="history-view" class="view-panel">
+        
+        <!-- Search & Filter tools -->
+        <div class="glass-card filter-card">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" class="search-icon" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="history-search-input" placeholder="搜尋交易日記關鍵字 (如: FOMO、止損、親子、報復)...">
+          </div>
+          <div class="filter-options">
+            <select id="history-emotion-filter">
+              <option value="">所有情緒狀態</option>
+              <option value="5">🔵 超然心流 (5分)</option>
+              <option value="4">🟢 理性專注 (4分)</option>
+              <option value="3">🟡 平穩一般 (3分)</option>
+              <option value="2">🟠 波動FOMO (2分)</option>
+              <option value="1">🔴 焦躁失控 (1分)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- History Log Timeline -->
+        <div class="history-timeline" id="history-timeline-container">
+          <!-- History day cards dynamically rendered by JS -->
+        </div>
+      </section>
+
+      <!-- View 4: Schedule Compliance View -->
+      <section id="schedule-view" class="view-panel">
+        <div class="schedule-layout">
+          <div class="glass-card schedule-summary-card">
+            <h3 class="card-title">今日時間表執行率</h3>
+            <div class="schedule-score-wrap">
+              <div class="schedule-score" id="schedule-score">0%</div>
+              <div class="schedule-score-note" id="schedule-score-note">完成 0 / 0 個時段</div>
+              <div class="schedule-rolling-note" id="schedule-rolling-note">7 日滾動平均: --</div>
+            </div>
+            <p class="settings-desc">量化方式：每個 timeslot 可設權重；交易窗、每日覆盤、睡眠衛生較高分。今日分數 = 完成權重 / 全部權重。建議目標先設 80%，連續 7 天達標才加難度。</p>
+            <p class="settings-desc">備註：若晚上太累，可用三段 5 分鐘快照式記錄（HSI 單後、歐洲 setup 後、美國單後），週六再整合。</p>
+          </div>
+
+          <div class="glass-card schedule-list-card">
+            <div class="schedule-header-row">
+              <h3 class="card-title">今日時間表 Checklist</h3>
+              <span class="field-help">紅色 = 未做，綠色 = 有做</span>
+            </div>
+            <div class="schedule-list" id="schedule-list">
+              <!-- Schedule slots rendered dynamically by JS -->
+            </div>
+          </div>
+
+          <div class="glass-card schedule-editor-card">
+            <div class="schedule-header-row">
+              <h3 class="card-title">編輯時間表</h3>
+              <span class="field-help">保存後會即時更新「而家做乜」卡、Dashboard 和分析 JSON</span>
+            </div>
+            <div class="schedule-editor-list" id="schedule-editor-list">
+              <!-- Schedule editor rows rendered dynamically by JS -->
+            </div>
+            <div class="schedule-editor-actions">
+              <button type="button" class="btn btn-primary" id="btn-save-schedule">保存時間表</button>
+              <button type="button" class="btn btn-secondary" id="btn-reset-schedule">還原預設時間表</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- View 5: Settings & Sync View -->
+      <section id="settings-view" class="view-panel">
+        <div class="settings-grid">
+          
+          <!-- Sync Settings -->
+          <div class="glass-card">
+            <h3 class="card-title">GitHub 雲端同步</h3>
+            <p class="settings-desc">本地會即時寫入瀏覽器；GitHub 並非每日自動同步。預設只在「儲存日記」或你按「儲存並推送」時上傳。開頁時若已設定 Token，會先 Pull 合併。</p>
+            
+            <form id="github-sync-form" class="settings-form">
+              <div class="form-group">
+                <label class="form-label" for="sync-token">GitHub Personal Access Token (PAT)</label>
+                <input type="password" id="sync-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxx">
+                <span class="field-help">需要 Repo (Full Control) 權限的 Token。</span>
+              </div>
+              
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="sync-user">GitHub 帳戶名稱</label>
+                  <input type="text" id="sync-user" placeholder="輸入您的 GitHub 帳號">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="sync-repo">儲存庫名稱 (Repository)</label>
+                  <input type="text" id="sync-repo" placeholder="例如: my-action-tracker-data">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="sync-path">檔案路徑 (預設為 data.json)</label>
+                <input type="text" id="sync-path" value="data.json" placeholder="data.json">
+              </div>
+
+              <div class="sync-actions">
+                <button type="submit" class="btn btn-primary" id="btn-save-sync">
+                  儲存並首次拉取 (Pull)
+                </button>
+                <button type="button" class="btn btn-secondary" id="btn-force-push">
+                  強制推動至雲端 (Push)
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Goal Settings -->
+          <div class="glass-card">
+            <h3 class="card-title">每日目標設定 (小時)</h3>
+            <p class="settings-desc">設定您每日核心活動的目標時間，以驅動儀表板上的活動圓環填滿度。</p>
+            <form id="goals-form" class="settings-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label" for="goal-trading">每日交易專注目標 (小時)</label>
+                  <input type="number" id="goal-trading" step="0.1" min="0.1" value="2.0">
+                  <span class="field-help">涵蓋歷史圖表、實時市場、實盤交易與覆盤。</span>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="goal-spirit">每日靈命成長目標 (小時)</label>
+                  <input type="number" id="goal-spirit" step="0.1" min="0.1" value="0.5">
+                  <span class="field-help">涵蓋冥想、靜心、禱告、靈修等。</span>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="goal-exercise">每日體能運動目標 (小時)</label>
+                  <input type="number" id="goal-exercise" step="0.1" min="0.1" value="0.5">
+                  <span class="field-help">涵蓋體育鍛煉與健身運動。</span>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="goal-learn">每日個人學習目標 (小時)</label>
+                  <input type="number" id="goal-learn" step="0.1" min="0.1" value="1.5">
+                  <span class="field-help">涵蓋交易影音與跨領域學習。</span>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label" for="goal-social">每日社群媒體限制 (小時)</label>
+                  <input type="number" id="goal-social" step="0.1" min="0.1" value="1.0">
+                  <span class="field-help">社群娛樂的時間上限，超過會扣分。</span>
+                </div>
+              </div>
+
+              <div class="goal-section">
+                <h4 class="subsection-title">每個時間 ITEM 目標 (小時)</h4>
+                <div class="form-grid compact-goal-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="goal-social_media">社群娛樂</label>
+                    <input type="number" id="goal-social_media" step="0.1" min="0.1" value="1.0">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-trading_static_training">歷史圖表訓練</label>
+                    <input type="number" id="goal-trading_static_training" step="0.1" min="0.1" value="1.0">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-trading_live_training">實時市場訓練</label>
+                    <input type="number" id="goal-trading_live_training" step="0.1" min="0.1" value="1.0">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-real_live_trading">實盤交易記錄</label>
+                    <input type="number" id="goal-real_live_trading" step="0.1" min="0.1" value="2.0">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-trading_study">交易影音學習</label>
+                    <input type="number" id="goal-trading_study" step="0.1" min="0.1" value="0.5">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-review">交易覆盤總結</label>
+                    <input type="number" id="goal-review" step="0.1" min="0.1" value="0.5">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-spiritual_growth">靈命成長</label>
+                    <input type="number" id="goal-spiritual_growth" step="0.1" min="0.1" value="0.5">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-exercise_item">體能運動健身</label>
+                    <input type="number" id="goal-exercise_item" step="0.1" min="0.1" value="0.5">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-other_study">跨領域學習</label>
+                    <input type="number" id="goal-other_study" step="0.1" min="0.1" value="1.0">
+                  </div>
+                </div>
+              </div>
+
+              <div class="goal-section">
+                <h4 class="subsection-title">每個次數 ITEM 目標 (次)</h4>
+                <div class="form-grid compact-goal-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="goal-parent_study">親子共讀學習</label>
+                    <input type="number" id="goal-parent_study" step="1" min="0" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-parent_play">親子遊戲陪伴</label>
+                    <input type="number" id="goal-parent_play" step="1" min="0" value="1">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-trading_static_cnt">死圖分析次數</label>
+                    <input type="number" id="goal-trading_static_cnt" step="1" min="0" value="5">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="goal-trading_live_cnt">生圖分析次數</label>
+                    <input type="number" id="goal-trading_live_cnt" step="1" min="0" value="3">
+                  </div>
+                </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary">儲存目標設定</button>
+            </form>
+          </div>
+
+          <!-- Backup and Data Management -->
+          <div class="glass-card full-width-card">
+            <h3 class="card-title">數據備份與管理</h3>
+            <p class="settings-desc">匯出或匯入您的本地 LocalStorage 備份檔案，確保數據安全。</p>
+            
+            <div class="data-manage-actions">
+              <button type="button" class="btn btn-secondary" id="btn-export-json">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                匯出備份 (Export JSON)
+              </button>
+
+              <button type="button" class="btn btn-primary" id="btn-export-analysis-json">
+                產生分析 JSON
+              </button>
+
+              <button type="button" class="btn btn-primary" id="btn-export-csv">
+                匯出 Tidy CSV (做 Analytics 分析用)
+              </button>
+              
+              <label for="import-file-input" class="btn btn-secondary" style="cursor: pointer; display: inline-flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" style="margin-right: 6px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                匯入備份 (Import JSON)
+              </label>
+              <input type="file" id="import-file-input" accept=".json" style="display: none;">
+              
+                <button type="button" class="btn btn-danger" id="btn-reset-db">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" style="margin-right: 6px;"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                清除所有本地數據
+              </button>
+            </div>
+          </div>
+
+          <!-- Installation Guide -->
+          <div class="glass-card full-width-card">
+            <h3 class="card-title">PWA 安裝與小工具模式指引</h3>
+            <div class="guide-content">
+              <div class="guide-step">
+                <h4>📱 在電話（手機）端安裝</h4>
+                <p>1. 啟動本程式的本地伺服器後，確保您的電話與電腦處於同一個 Wi-Fi 網絡。</p>
+                <p>2. 在電話瀏覽器（iOS 的 Safari 或 Android 的 Chrome）輸入您的 <strong class="local-ip-placeholder">電腦 IP 地址:8000</strong>。</p>
+                <p>3. 點擊分享或選單按鈕，選擇 <strong>「新增至主畫面」</strong> (Add to Home Screen) 或 <strong>「安裝 App」</strong>。</p>
+                <p>4. 手機案頭即會出現 App 圖示，點擊後會以無網址列的**獨立 App 模式**運行，完美離線使用！</p>
+              </div>
+              <div class="guide-step">
+                <h4>💻 在 Windows 下方工作列（BAR）彈出</h4>
+                <p>1. 在 Windows 電腦 Chrome 或 Edge 瀏覽器開啟網址後，在網址列右側點擊 <strong>「安裝此應用程式」</strong> (Install App) 圖示。</p>
+                <p>2. 安裝完成後，右鍵點擊工作列中本程式的圖示，選擇 <strong>「固定至工作列」</strong> (Pin to Taskbar)。</p>
+                <p>3. 點擊本程式頂部的 <strong>「極簡小工具模式」</strong> 按鈕，將視窗縮小調整，即可當作隨手點擊的浮動小工具！</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+  
+  <script src="app.js?v=14"></script>
+</body>
+</html>
