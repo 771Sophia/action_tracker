@@ -19,12 +19,12 @@
       "trading_live_cnt": 0
     },
     "journal": {
-      "emotion": 3,
+      "emotion": 1,
       "awareness": 2,
-      "setup": "",
-      "execution": "",
-      "review": "",
-      "nextAction": ""
+      "setup": "太心急做晨光, 自己做得5MIN 準備就入市, 太高估自己睇市的能力",
+      "execution": "有拉高STOP LOST, 因為我係炒3MIN圖, 佢係咁MOVE我就好唔甘心止蝕, 就一野拉高去KEY LEVEL上,",
+      "review": "但之後佢仲升到上一個OB先落返來, 我睇好方向都輸入市位",
+      "nextAction": "未做20次晨光BACK TEST唔入市"
     },
     "schedule": {},
     "pretrade": {
