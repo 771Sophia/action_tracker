@@ -1975,16 +1975,63 @@ function buildDailySummary(dateStr, dayData) {
 }
 
 function exportJsonFile(filename, payload) {
-  const dataStr = JSON.stringify(payload, null, 2);
-  const blob = new Blob([dataStr], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  try {
+    const dataStr = JSON.stringify(payload, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.rel = 'noopener';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 500);
+    return true;
+  } catch (err) {
+    console.error('exportJsonFile failed', err);
+    return false;
+  }
+}
+
+async function copyTextToClipboard(text) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (err) {
+    // Fall through to legacy copy.
+  }
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (err) {
+    return false;
+  }
+}
+
+function normalizeImportedTrackerData(imported) {
+  // Accept raw day-map, or wrapped export payloads.
+  if (!imported || typeof imported !== 'object') return null;
+  if (imported.rawData && typeof imported.rawData === 'object') return imported.rawData;
+  if (imported.data && typeof imported.data === 'object' && !imported.timers) return imported.data;
+  // Heuristic: keys look like YYYY-MM-DD
+  const keys = Object.keys(imported);
+  if (keys.length === 0) return imported;
+  if (keys.some(k => /^\d{4}-\d{2}-\d{2}$/.test(k))) return imported;
+  return null;
 }
 
 function parseTimeInputToSeconds(raw) {
@@ -2696,7 +2743,25 @@ document.addEventListener('DOMContentLoaded', async () => {
   const btnExportJson = document.getElementById('btn-export-json');
   if (btnExportJson) {
     btnExportJson.addEventListener('click', () => {
-      exportJsonFile(`focus_tracker_backup_${getTodayDateString()}.json`, state.data);
+      const ok = exportJsonFile(`focus_tracker_backup_${getTodayDateString()}.json`, state.data);
+      if (ok) {
+        alert('已觸發下載。如果 Downloads 沒有檔案，請改按「複製備份到剪貼簿」，或檢查瀏覽器是否攔截下載。');
+      } else {
+        alert('匯出失敗。請改用「複製備份到剪貼簿」。');
+      }
+    });
+  }
+
+  const btnCopyJson = document.getElementById('btn-copy-json');
+  if (btnCopyJson) {
+    btnCopyJson.addEventListener('click', async () => {
+      const dataStr = JSON.stringify(state.data, null, 2);
+      const ok = await copyTextToClipboard(dataStr);
+      if (ok) {
+        alert('已複製完整備份到剪貼簿。請到 GitHub 版頁面按 F12 → Console，貼上還原指令。');
+      } else {
+        alert('複製失敗。請按 F12 打開 Console，執行：copy(localStorage.getItem("focus_tracker_data"))');
+      }
     });
   }
 
@@ -2757,7 +2822,12 @@ document.addEventListener('DOMContentLoaded', async () => {
       const reader = new FileReader();
       reader.onload = function(evt) {
         try {
-          const importedData = JSON.parse(evt.target.result);
+          const importedRaw = JSON.parse(evt.target.result);
+          const importedData = normalizeImportedTrackerData(importedRaw);
+          if (!importedData) {
+            alert('JSON 格式不正確。請匯入 Export JSON 備份（日期為 key 的資料）。');
+            return;
+          }
           if (confirm('匯入備份將會合併您的歷史數據。確定要繼續嗎？')) {
             mergeData(importedData);
             saveLocalData();
