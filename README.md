@@ -14,24 +14,28 @@ Use this when you do not want to keep a local Python server running.
 
 ### 1) Push project to GitHub repo
 
-From this folder:
+Local git is already initialized in this folder (`main` branch, first commit done).
 
-```bash
-git init
-git add .
-git commit -m "Initial Action Tracker"
-git branch -M main
-git remote add origin <YOUR_PRIVATE_REPO_URL>
+In CMD (replace with your repo URL):
+
+```cmd
+cd /d C:\Users\MY-PC\.gemini\antigravity\scratch\action_tracker
+git remote add origin https://github.com/<YOUR_USER>/<YOUR_REPO>.git
 git push -u origin main
 ```
 
-If repo is already connected, just:
+If GitHub asks for password, paste your **classic PAT** (not account password).
 
-```bash
+Later updates:
+
+```cmd
 git add .
 git commit -m "Update tracker"
 git push
 ```
+
+**Pages + private repo note:** personal private repos may need GitHub Pro for Pages.  
+If Pages is greyed out, make this frontend repo Public (data stays in your separate private sync repo / localStorage).
 
 ### 2) Enable Pages
 
