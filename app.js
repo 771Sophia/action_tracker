@@ -2072,6 +2072,10 @@ function repairJournalEncodingInState() {
   });
 }
 
+function isTrackerDayKey(key) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(key || ''));
+}
+
 function sanitizeDayRecord(dateStr, day) {
   const empty = initEmptyDay(dateStr);
   if (!day || typeof day !== 'object') return empty;
@@ -2486,6 +2490,7 @@ function mergeData(remoteData) {
 
 // --- 10. Event Listeners & Initialization ---
 document.addEventListener('DOMContentLoaded', async () => {
+  try {
   if ('serviceWorker' in navigator) {
     try {
       const registrations = await navigator.serviceWorker.getRegistrations();
@@ -2508,6 +2513,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelectorAll('.local-ip-placeholder').forEach(el => {
     el.innerText = `${hostname}:${port}`;
   });
+
+  // Show date ASAP so UI never stays stuck on 載入中...
+  const dateEl = document.getElementById('current-date-str');
+  if (dateEl) dateEl.innerText = `${state.currentDate} (今日)`;
 
   // 2. Setup Navigation Routing
   const navBtns = document.querySelectorAll('.nav-btn');
@@ -2744,6 +2753,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Save Journal Form Submit
   const journalForm = document.getElementById('trading-journal-form');
+  if (journalForm) {
   journalForm.addEventListener('submit', (e) => {
     e.preventDefault();
     ensureDateExists(state.currentDate);
@@ -2765,6 +2775,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       gitHubPush();
     }
   });
+  }
 
   // 6. Setup History search & filter changes
   document.getElementById('history-search-input').addEventListener('input', renderHistory);
@@ -3033,4 +3044,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   // Service worker registration is disabled during local development to avoid stale UI cache.
+  } catch (err) {
+    console.error('App init failed', err);
+    const dateEl = document.getElementById('current-date-str');
+    if (dateEl) dateEl.innerText = `${getTodayDateString()} (今日)`;
+    alert(`頁面初始化失敗：${err && err.message ? err.message : err}`);
+  }
 });
