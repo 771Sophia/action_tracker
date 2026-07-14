@@ -2183,6 +2183,30 @@ function setSyncStatus(status, text) {
   badge.querySelector('.badge-text').innerText = text;
 }
 
+function decodeGitHubBase64(contentBase64) {
+  const cleaned = String(contentBase64 || '').replace(/\s/g, '');
+  const binary = atob(cleaned);
+  // GitHub file content is UTF-8 bytes; convert safely for Chinese text.
+  const bytes = Uint8Array.from(binary, ch => ch.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+function encodeGitHubBase64(text) {
+  const bytes = new TextEncoder().encode(String(text ?? ''));
+  let binary = '';
+  bytes.forEach(b => { binary += String.fromCharCode(b); });
+  return btoa(binary);
+}
+
+function githubAuthHeaders(token, extra = {}) {
+  return {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    ...extra
+  };
+}
+
 // GitHub API: Pull Data
 async function gitHubPull() {
   const { token, username, repo, filepath } = state.sync;
@@ -2192,27 +2216,33 @@ async function gitHubPull() {
   }
 
   setSyncStatus('syncing', '正在下載...');
-  const url = `https://api.github.com/repos/${username}/${repo}/contents/${filepath}`;
+  const url = `https://api.github.com/repos/${username}/${repo}/contents/${filepath || 'data.json'}`;
 
   try {
     const res = await fetch(url, {
-      headers: {
-        'Authorization': `token ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
+      headers: githubAuthHeaders(token)
     });
 
     if (res.status === 404) {
       // File not found on repo, which means first time sync. We will push local data
       setSyncStatus('online', '初始化中...');
-      await gitHubPush(true);
+      const pushed = await gitHubPush(true);
+      if (!pushed) throw new Error('初始化上傳失敗（404 後 Push 未成功）');
       return true;
     }
 
-    if (!res.ok) throw new Error('GitHub Pull Failed');
+    if (res.status === 401 || res.status === 403) {
+      const detail = await res.text();
+      throw new Error(`權限失敗 HTTP ${res.status}：請檢查 PAT 是否有 repo 權限、未過期，以及 Username/Repo 是否正確。 ${detail.slice(0, 180)}`);
+    }
+
+    if (!res.ok) {
+      const detail = await res.text();
+      throw new Error(`Pull 失敗 HTTP ${res.status}: ${detail.slice(0, 180)}`);
+    }
 
     const json = await res.json();
-    const remoteContent = atob(json.content.replace(/\s/g, ''));
+    const remoteContent = decodeGitHubBase64(json.content);
     const remoteData = JSON.parse(remoteContent);
 
     // Conflict Resolution: Merge remote and local
@@ -2226,7 +2256,7 @@ async function gitHubPull() {
   } catch (err) {
     console.error(err);
     setSyncStatus('offline', '同步失敗');
-    alert('GitHub 下載數據失敗，請檢查設定與 Token 權限。');
+    alert(`GitHub 下載數據失敗：\n${err && err.message ? err.message : err}`);
     return false;
   }
 }
@@ -2237,28 +2267,28 @@ async function gitHubPush(isNewFile = false) {
   if (!token || !username || !repo) return false;
 
   setSyncStatus('syncing', '正在上傳...');
-  const url = `https://api.github.com/repos/${username}/${repo}/contents/${filepath}`;
+  const url = `https://api.github.com/repos/${username}/${repo}/contents/${filepath || 'data.json'}`;
 
   try {
     let sha = null;
 
-    if (!isNewFile) {
-      // Need to fetch file metadata to get SHA
-      const getRes = await fetch(url, {
-        headers: {
-          'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
-        }
-      });
-      if (getRes.ok) {
-        const metadata = await getRes.json();
-        sha = metadata.sha;
-      }
+    // Always try to read SHA when file may already exist (avoids 422 on first "new" push)
+    const getRes = await fetch(url, {
+      headers: githubAuthHeaders(token)
+    });
+    if (getRes.ok) {
+      const metadata = await getRes.json();
+      sha = metadata.sha;
+    } else if (getRes.status === 401 || getRes.status === 403) {
+      const detail = await getRes.text();
+      throw new Error(`權限失敗 HTTP ${getRes.status}：Token / repo 權限不足。 ${detail.slice(0, 180)}`);
+    } else if (!isNewFile && getRes.status !== 404) {
+      const detail = await getRes.text();
+      throw new Error(`讀取檔案 SHA 失敗 HTTP ${getRes.status}: ${detail.slice(0, 180)}`);
     }
 
-    // Convert local data to Base64 String (handling Unicode cleanly)
     const localJsonStr = JSON.stringify(state.data, null, 2);
-    const base64Content = btoa(unescape(encodeURIComponent(localJsonStr)));
+    const base64Content = encodeGitHubBase64(localJsonStr);
 
     const body = {
       message: `Sync activity logs: ${getTodayDateString()}`,
@@ -2268,21 +2298,21 @@ async function gitHubPush(isNewFile = false) {
 
     const putRes = await fetch(url, {
       method: 'PUT',
-      headers: {
-        'Authorization': `token ${token}`,
-        'Content-Type': 'application/json'
-      },
+      headers: githubAuthHeaders(token, { 'Content-Type': 'application/json' }),
       body: JSON.stringify(body)
     });
 
-    if (!putRes.ok) throw new Error('GitHub Push Failed');
+    if (!putRes.ok) {
+      const detail = await putRes.text();
+      throw new Error(`Push 失敗 HTTP ${putRes.status}: ${detail.slice(0, 220)}`);
+    }
 
     setSyncStatus('online', '已同步');
     return true;
   } catch (err) {
     console.error(err);
     setSyncStatus('offline', '上傳失敗');
-    alert('上傳數據到 GitHub 失敗。');
+    alert(`上傳數據到 GitHub 失敗：\n${err && err.message ? err.message : err}`);
     return false;
   }
 }
