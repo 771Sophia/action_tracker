@@ -401,6 +401,7 @@ function loadLocalData() {
   // Ensure current date exists
   ensureDateExists(state.currentDate);
   purgeNonDayKeysFromState();
+  repairJournalEncodingInState();
 }
 
 function ensureDateExists(dateStr) {
@@ -2023,8 +2024,52 @@ async function copyTextToClipboard(text) {
   }
 }
 
-function isTrackerDayKey(key) {
-  return /^\d{4}-\d{2}-\d{2}$/.test(String(key || ''));
+function countCjkChars(text) {
+  return [...String(text || '')].filter(ch => ch >= '\u4e00' && ch <= '\u9fff').length;
+}
+
+function looksLikeMojibake(text) {
+  const s = String(text || '');
+  if (!s) return false;
+  const cjk = countCjkChars(s);
+  const suspicious = [...s].filter(ch => 'åæçèéöäöüßÂÃÄÅÆÇŒœ'.includes(ch)).length;
+  return suspicious >= 2 && cjk === 0;
+}
+
+function repairMojibakeText(text) {
+  if (!text || typeof text !== 'string') return text;
+  if (!looksLikeMojibake(text) && countCjkChars(text) > 0) return text;
+  try {
+    const bytes = Uint8Array.from(text, ch => ch.charCodeAt(0) & 0xff);
+    const fixed = new TextDecoder('utf-8', { fatal: false }).decode(bytes);
+    if (countCjkChars(fixed) > countCjkChars(text)) return fixed;
+    if (looksLikeMojibake(text) && countCjkChars(fixed) > 0) return fixed;
+  } catch (err) {
+    // Keep original text when repair fails.
+  }
+  return text;
+}
+
+function preferReadableText(a, b) {
+  const left = repairMojibakeText(a || '');
+  const right = repairMojibakeText(b || '');
+  const leftCjk = countCjkChars(left);
+  const rightCjk = countCjkChars(right);
+  if (rightCjk !== leftCjk) return rightCjk > leftCjk ? right : left;
+  if (looksLikeMojibake(left) && !looksLikeMojibake(right)) return right;
+  if (looksLikeMojibake(right) && !looksLikeMojibake(left)) return left;
+  return (right.length > left.length) ? right : left;
+}
+
+function repairJournalEncodingInState() {
+  Object.keys(state.data || {}).forEach(dateStr => {
+    if (!isTrackerDayKey(dateStr)) return;
+    const day = state.data[dateStr];
+    if (!day || !day.journal) return;
+    ['setup', 'execution', 'review', 'nextAction'].forEach(field => {
+      day.journal[field] = repairMojibakeText(day.journal[field] || '');
+    });
+  });
 }
 
 function sanitizeDayRecord(dateStr, day) {
@@ -2321,6 +2366,7 @@ async function gitHubPull() {
     // Conflict Resolution: Merge remote and local
     mergeData(remoteData);
     purgeNonDayKeysFromState();
+    repairJournalEncodingInState();
     saveLocalData();
     updateUI();
     loadJournalForm();
@@ -2416,15 +2462,15 @@ function mergeData(remoteData) {
       local.counters[k] = Math.max(local.counters[k] || 0, remote.counters[k] || 0);
     });
 
-    // Merge Journal text (Keep longer entries, or take remote if local is empty)
+    // Merge Journal text: prefer readable Chinese over mojibake / empty
     if (remote.journal) {
-      local.journal = local.journal || remote.journal;
+      local.journal = local.journal || { ...remote.journal };
       local.journal.emotion = remote.journal.emotion || local.journal.emotion || 3;
       local.journal.awareness = remote.journal.awareness || local.journal.awareness || 2;
-      if ((remote.journal.setup || '').length > (local.journal.setup || '').length) local.journal.setup = remote.journal.setup;
-      if ((remote.journal.execution || '').length > (local.journal.execution || '').length) local.journal.execution = remote.journal.execution;
-      if ((remote.journal.review || '').length > (local.journal.review || '').length) local.journal.review = remote.journal.review;
-      if ((remote.journal.nextAction || '').length > (local.journal.nextAction || '').length) local.journal.nextAction = remote.journal.nextAction;
+      local.journal.setup = preferReadableText(local.journal.setup, remote.journal.setup);
+      local.journal.execution = preferReadableText(local.journal.execution, remote.journal.execution);
+      local.journal.review = preferReadableText(local.journal.review, remote.journal.review);
+      local.journal.nextAction = preferReadableText(local.journal.nextAction, remote.journal.nextAction);
     }
 
     local.water = Math.max(local.water || 0, remote.water || 0);
