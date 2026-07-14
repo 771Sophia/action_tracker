@@ -400,6 +400,7 @@ function loadLocalData() {
 
   // Ensure current date exists
   ensureDateExists(state.currentDate);
+  purgeNonDayKeysFromState();
 }
 
 function ensureDateExists(dateStr) {
@@ -2022,16 +2023,84 @@ async function copyTextToClipboard(text) {
   }
 }
 
+function isTrackerDayKey(key) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(key || ''));
+}
+
+function sanitizeDayRecord(dateStr, day) {
+  const empty = initEmptyDay(dateStr);
+  if (!day || typeof day !== 'object') return empty;
+
+  const out = {
+    ...empty,
+    ...day,
+    date: dateStr,
+    timers: { ...empty.timers, ...(day.timers || {}) },
+    counters: { ...empty.counters, ...(day.counters || {}) },
+    journal: { ...empty.journal, ...(day.journal || {}) },
+    schedule: { ...(day.schedule || {}) },
+    pretrade: { passes: 0, ...(day.pretrade || {}) },
+    water: Number.isFinite(day.water) ? day.water : 0,
+    todos: Array.isArray(day.todos) ? day.todos : []
+  };
+  return out;
+}
+
 function normalizeImportedTrackerData(imported) {
-  // Accept raw day-map, or wrapped export payloads.
-  if (!imported || typeof imported !== 'object') return null;
-  if (imported.rawData && typeof imported.rawData === 'object') return imported.rawData;
-  if (imported.data && typeof imported.data === 'object' && !imported.timers) return imported.data;
-  // Heuristic: keys look like YYYY-MM-DD
-  const keys = Object.keys(imported);
-  if (keys.length === 0) return imported;
-  if (keys.some(k => /^\d{4}-\d{2}-\d{2}$/.test(k))) return imported;
-  return null;
+  // Accept raw day-map, wrapped analysis export, or polluted hybrid files.
+  if (!imported || typeof imported !== 'object' || Array.isArray(imported)) return null;
+
+  const collected = {};
+
+  const absorb = (source) => {
+    if (!source || typeof source !== 'object') return;
+    Object.keys(source).forEach(key => {
+      if (!isTrackerDayKey(key)) return;
+      const next = sanitizeDayRecord(key, source[key]);
+      if (!collected[key]) {
+        collected[key] = next;
+        return;
+      }
+      // Prefer larger timer/counter values when both sources have the same day.
+      TRACKER_KEYS.timers.forEach(k => {
+        collected[key].timers[k] = Math.max(collected[key].timers[k] || 0, next.timers[k] || 0);
+      });
+      TRACKER_KEYS.counters.forEach(k => {
+        collected[key].counters[k] = Math.max(collected[key].counters[k] || 0, next.counters[k] || 0);
+      });
+      if (next.journal) {
+        const lj = collected[key].journal || {};
+        const rj = next.journal;
+        collected[key].journal = {
+          ...lj,
+          emotion: rj.emotion || lj.emotion || 3,
+          awareness: rj.awareness || lj.awareness || 2,
+          setup: ((rj.setup || '').length > (lj.setup || '').length) ? rj.setup : (lj.setup || ''),
+          execution: ((rj.execution || '').length > (lj.execution || '').length) ? rj.execution : (lj.execution || ''),
+          review: ((rj.review || '').length > (lj.review || '').length) ? rj.review : (lj.review || ''),
+          nextAction: ((rj.nextAction || '').length > (lj.nextAction || '').length) ? rj.nextAction : (lj.nextAction || '')
+        };
+      }
+      collected[key].water = Math.max(collected[key].water || 0, next.water || 0);
+    });
+  };
+
+  absorb(imported);
+  absorb(imported.rawData);
+  absorb(imported.data);
+
+  if (Object.keys(collected).length === 0) return null;
+  return collected;
+}
+
+function purgeNonDayKeysFromState() {
+  Object.keys(state.data || {}).forEach(key => {
+    if (!isTrackerDayKey(key)) {
+      delete state.data[key];
+      return;
+    }
+    state.data[key] = sanitizeDayRecord(key, state.data[key]);
+  });
 }
 
 function parseTimeInputToSeconds(raw) {
@@ -2243,10 +2312,15 @@ async function gitHubPull() {
 
     const json = await res.json();
     const remoteContent = decodeGitHubBase64(json.content);
-    const remoteData = JSON.parse(remoteContent);
+    const remoteParsed = JSON.parse(remoteContent);
+    const remoteData = normalizeImportedTrackerData(remoteParsed);
+    if (!remoteData) {
+      throw new Error('遠端 data.json 格式不正確（缺少日期紀錄）。請用 App「強制推動」覆寫一份乾淨備份。');
+    }
 
     // Conflict Resolution: Merge remote and local
     mergeData(remoteData);
+    purgeNonDayKeysFromState();
     saveLocalData();
     updateUI();
     loadJournalForm();
@@ -2287,6 +2361,7 @@ async function gitHubPush(isNewFile = false) {
       throw new Error(`讀取檔案 SHA 失敗 HTTP ${getRes.status}: ${detail.slice(0, 180)}`);
     }
 
+    purgeNonDayKeysFromState();
     const localJsonStr = JSON.stringify(state.data, null, 2);
     const base64Content = encodeGitHubBase64(localJsonStr);
 
@@ -2319,35 +2394,47 @@ async function gitHubPush(isNewFile = false) {
 
 // Merge remote database into local database smoothly (Conflict resolution)
 function mergeData(remoteData) {
-  Object.keys(remoteData).forEach(dateStr => {
+  const normalized = normalizeImportedTrackerData(remoteData);
+  if (!normalized) return;
+
+  Object.keys(normalized).forEach(dateStr => {
+    const remote = sanitizeDayRecord(dateStr, normalized[dateStr]);
     if (!state.data[dateStr]) {
-      state.data[dateStr] = remoteData[dateStr];
-    } else {
-      const local = state.data[dateStr];
-      const remote = remoteData[dateStr];
-
-      // Merge Timers: Keep maximum duration recorded
-      TRACKER_KEYS.timers.forEach(k => {
-        local.timers[k] = Math.max(local.timers[k] || 0, remote.timers[k] || 0);
-      });
-
-      // Merge Counters: Keep maximum counts
-      TRACKER_KEYS.counters.forEach(k => {
-        local.counters[k] = Math.max(local.counters[k] || 0, remote.counters[k] || 0);
-      });
-
-      // Merge Journal text (Keep longer entries, or take remote if local is empty)
-      if (remote.journal) {
-        if (!local.journal) local.journal = remote.journal;
-        else {
-          local.journal.emotion = remote.journal.emotion || local.journal.emotion || 3;
-          if ((remote.journal.setup || '').length > (local.journal.setup || '').length) local.journal.setup = remote.journal.setup;
-          if ((remote.journal.execution || '').length > (local.journal.execution || '').length) local.journal.execution = remote.journal.execution;
-          if ((remote.journal.review || '').length > (local.journal.review || '').length) local.journal.review = remote.journal.review;
-          if ((remote.journal.nextAction || '').length > (local.journal.nextAction || '').length) local.journal.nextAction = remote.journal.nextAction;
-        }
-      }
+      state.data[dateStr] = remote;
+      return;
     }
+
+    const local = sanitizeDayRecord(dateStr, state.data[dateStr]);
+
+    // Merge Timers: Keep maximum duration recorded
+    TRACKER_KEYS.timers.forEach(k => {
+      local.timers[k] = Math.max(local.timers[k] || 0, remote.timers[k] || 0);
+    });
+
+    // Merge Counters: Keep maximum counts
+    TRACKER_KEYS.counters.forEach(k => {
+      local.counters[k] = Math.max(local.counters[k] || 0, remote.counters[k] || 0);
+    });
+
+    // Merge Journal text (Keep longer entries, or take remote if local is empty)
+    if (remote.journal) {
+      local.journal = local.journal || remote.journal;
+      local.journal.emotion = remote.journal.emotion || local.journal.emotion || 3;
+      local.journal.awareness = remote.journal.awareness || local.journal.awareness || 2;
+      if ((remote.journal.setup || '').length > (local.journal.setup || '').length) local.journal.setup = remote.journal.setup;
+      if ((remote.journal.execution || '').length > (local.journal.execution || '').length) local.journal.execution = remote.journal.execution;
+      if ((remote.journal.review || '').length > (local.journal.review || '').length) local.journal.review = remote.journal.review;
+      if ((remote.journal.nextAction || '').length > (local.journal.nextAction || '').length) local.journal.nextAction = remote.journal.nextAction;
+    }
+
+    local.water = Math.max(local.water || 0, remote.water || 0);
+    if ((!local.todos || local.todos.length === 0) && remote.todos) local.todos = remote.todos;
+    if ((!local.schedule || Object.keys(local.schedule).length === 0) && remote.schedule) local.schedule = remote.schedule;
+    if (remote.pretrade && (remote.pretrade.passes || 0) > ((local.pretrade && local.pretrade.passes) || 0)) {
+      local.pretrade = remote.pretrade;
+    }
+
+    state.data[dateStr] = local;
   });
 }
 
